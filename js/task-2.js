@@ -32,19 +32,21 @@ const images = [
     alt: "Lighthouse Coast Sea",
   }
 ];
-
-const galeryList = document.createElement("li");
-galeryList.classList.add("galeryListItem");
-const imaging = document.createElement("img");
-imaging.classList.add("picture");
-imaging.src = "https://images.pexels.com/photos/140134/pexels-photo-140134.jpeg?dpr=2&h=750&w=1260";
-imaging.alt = "White and Black Long Fur Cat";
-// for (let image of images) {
-// const galeryTotal = document.querySelector(".gallery");
-
-  // document.body.galeryTotal.prepend(galeryList);
-  // const galeryListEl = body.querySelector(".galeryListItem");
-  document.body.prepend(imaging);
-  // imaging.src = image.url;
-  // imaging.alt = image.alt;
-// }
+const galeryTotal = document.querySelector(".gallery");
+galeryTotal.style.display = "flex";
+galeryTotal.style.flexWrap = "wrap";
+galeryTotal.style.padding = "20px";
+galeryTotal.style.gap = "5px";
+galeryTotal.style.listStyleType = "none";
+galeryTotal.style.border = "2px solid #000";
+const elements = images.map((image) => {
+ const galeryList = document.createElement("li");
+  galeryList.classList.add("galeryListItem");
+ const imaging = document.createElement("img");
+imaging.classList.add("picture"); 
+galeryList.append(imaging);
+  imaging.src = image.url;
+  imaging.alt = image.alt;
+  imaging.width = "500";
+  galeryTotal.append(galeryList);
+})
