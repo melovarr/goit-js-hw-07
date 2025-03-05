@@ -32,3 +32,19 @@ const images = [
     alt: "Lighthouse Coast Sea",
   }
 ];
+
+const galeryList = document.createElement("li");
+galeryList.classList.add("galeryListItem");
+const imaging = document.createElement("img");
+imaging.classList.add("picture");
+imaging.src = "https://images.pexels.com/photos/140134/pexels-photo-140134.jpeg?dpr=2&h=750&w=1260";
+imaging.alt = "White and Black Long Fur Cat";
+// for (let image of images) {
+// const galeryTotal = document.querySelector(".gallery");
+
+  // document.body.galeryTotal.prepend(galeryList);
+  // const galeryListEl = body.querySelector(".galeryListItem");
+  document.body.prepend(imaging);
+  // imaging.src = image.url;
+  // imaging.alt = image.alt;
+// }
