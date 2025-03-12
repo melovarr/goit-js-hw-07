@@ -13,9 +13,101 @@
 // Розміри першого <div> елемента мають бути 30px на 30px.
 // Кожен наступний елемент повинен бути ширшим і вищим від попереднього на 10px.
 // Усі елементи повинні мати випадковий колір фону. Використовуй готову функцію getRandomHexColor() для отримання випадкового кольору.
-//  function getRandomHexColor() {
+ function getRandomHexColor() {
+  return `#${Math.floor(Math.random() * 16777215)
+    .toString(16)
+    .padStart(6, 0)}`;
+ }
+// Для очищення колекції після натискання на кнопку Destroy створи функцію destroyBoxes(), яка очищає вміст div#boxes, у такий спосіб видаляючи всі створені елементи.
+//-----------------------------------
+const formForBoxes = document.querySelector("#controls");
+const formBoxesInput = document.querySelector("#controls>input");
+const createBoxesButton = document.querySelector("button[data-create]");
+const destroyBoxesButton = document.querySelector("button[data-destroy]");
+const boxesContainer = document.querySelector("#boxes");
+boxesContainer.style.display = "flex";
+boxesContainer.style.flexWrap = "wrap";
+
+let amount;
+let l = 30;
+const boxes = [];
+
+formBoxesInput.addEventListener("change", (event) => {
+  amount = event.target.value;
+    return amount;
+})
+
+createBoxesButton.addEventListener("click", () => {
+  boxes.length = 0;
+  l = 30;
+  if (amount >= 1 && amount <= 100) {
+    arrayBoxes(amount);
+    boxesContainer.append(...createBoxes(boxes));
+  }
+  formBoxesInput.value = '';
+});
+
+destroyBoxesButton.addEventListener("click", () => {
+  boxesContainer.innerHTML = "";
+})
+
+function arrayBoxes(amount) {
+  for (let i = 0; i < amount; i++){
+      boxes.splice(i, 1, {
+          color: getRandomHexColor(),
+          length: `${l}px`,
+      height: `${l}px`});
+    l += 10
+    }
+    return; 
+}
+
+const createBoxes = (boxes) => {
+return boxes.map((box) => {
+        const boxEl = document.createElement("div");
+        boxEl.classList.add("color-box");
+        boxEl.style.backgroundColor = box.color;
+        boxEl.style.height = box.height;
+        boxEl.style.width = box.length;
+        return boxEl;
+})
+}
+
+
+
+//-----===================-----------------------------------
+// const createBoxesButton = document.querySelector('.boxes');
+
+// let amount = 10;
+// let l = 30;
+// // const box = {};
+// const boxes = []
+// function arrayBoxes(amount) {
+//   for (let i = 0; i < amount; i++){
+//       boxes.push({
+//           color: getRandomHexColor(),
+//           length: `${l}px`,
+//       height: `${l}px`});
+//     l += 10
+//     }
+//     return; 
+// }
+// const createBoxes = (boxes) => {
+// return boxes.map((box) => {
+//         const boxEl = document.createElement("div");
+//         boxEl.classList.add("color-box");
+//         boxEl.style.backgroundColor = box.color;
+//         boxEl.style.height = box.height;
+//         boxEl.style.width = box.length;
+//         return boxEl;
+// })
+// }
+// arrayBoxes(amount);
+// createBoxesButton.append(...createBoxes(boxes));
+// console.log(boxes);
+
+// function getRandomHexColor() {
 //   return `#${Math.floor(Math.random() * 16777215)
 //     .toString(16)
 //     .padStart(6, 0)}`;
 //  }
-// Для очищення колекції після натискання на кнопку Destroy створи функцію destroyBoxes(), яка очищає вміст div#boxes, у такий спосіб видаляючи всі створені елементи.
