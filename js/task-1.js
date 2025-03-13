@@ -10,7 +10,6 @@ const itemTitleElement = document.querySelectorAll(".item>h2");
 
 const itemTitleElements = document.querySelectorAll(".item>ul");
 
-for (let i = 0; i <= itemTitleElement.length; i++) {
-    console.log(itemTitleElement[i].textContent);
-    console.log(itemTitleElements[i].childElementCount);
+for (let i = 0; i < itemTitleElement.length; i++) {
+    console.log(`${itemTitleElement[i].textContent} - ${itemTitleElements[i].childElementCount}`);
 }

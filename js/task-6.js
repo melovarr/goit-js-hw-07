@@ -38,20 +38,21 @@ formBoxesInput.addEventListener("change", (event) => {
 })
 
 createBoxesButton.addEventListener("click", () => {
-  boxes.length = 0;
+  boxesContainer.innerHTML = "";
   l = 30;
   if (amount >= 1 && amount <= 100) {
-    arrayBoxes(amount);
-    boxesContainer.append(...createBoxes(boxes));
+    createBoxes(amount);
+    boxesContainer.insertAdjacentHTML("beforeend", boxes.map((box) => `<div class="color-box" style="background:${box.color}; width:${box.length}; height:${box.height}"></div>`).join(""));
   }
   formBoxesInput.value = '';
 });
 
 destroyBoxesButton.addEventListener("click", () => {
   boxesContainer.innerHTML = "";
+  amount = 0;
 })
 
-function arrayBoxes(amount) {
+function createBoxes(amount) {
   for (let i = 0; i < amount; i++){
       boxes.splice(i, 1, {
           color: getRandomHexColor(),
@@ -62,16 +63,16 @@ function arrayBoxes(amount) {
     return; 
 }
 
-const createBoxes = (boxes) => {
-return boxes.map((box) => {
-        const boxEl = document.createElement("div");
-        boxEl.classList.add("color-box");
-        boxEl.style.backgroundColor = box.color;
-        boxEl.style.height = box.height;
-        boxEl.style.width = box.length;
-        return boxEl;
-})
-}
+// const createBoxes = (boxes) => {
+// return boxes.map((box) => {
+//         const boxEl = document.createElement("div");
+//         boxEl.classList.add("color-box");
+//         boxEl.style.backgroundColor = box.color;
+//         boxEl.style.height = box.height;
+//         boxEl.style.width = box.length;
+//         return boxEl;
+// })
+// }
 
 
 

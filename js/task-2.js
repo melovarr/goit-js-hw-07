@@ -39,14 +39,15 @@ galeryTotal.style.padding = "20px";
 galeryTotal.style.gap = "5px";
 galeryTotal.style.listStyleType = "none";
 galeryTotal.style.border = "2px solid #000";
-const elements = images.map((image) => {
- const galeryList = document.createElement("li");
-  galeryList.classList.add("galeryListItem");
- const imaging = document.createElement("img");
-imaging.classList.add("picture"); 
-galeryList.append(imaging);
-  imaging.src = image.url;
-  imaging.alt = image.alt;
-  imaging.width = "500";
-  galeryTotal.append(galeryList);
-})
+// const elements = images.map((image) => {
+//  const galeryList = document.createElement("li");
+//   galeryList.classList.add("galeryListItem");
+//  const imaging = document.createElement("img");
+// imaging.classList.add("picture"); 
+// galeryList.append(imaging);
+//   imaging.src = image.url;
+//   imaging.alt = image.alt;
+//   imaging.width = "500";
+//   galeryTotal.append(galeryList);
+// })
+galeryTotal.insertAdjacentHTML("beforeend", images.map((image) => `<li><img src="${image.url}" alt="${image.alt}" width="500"></li>`).join(""));
